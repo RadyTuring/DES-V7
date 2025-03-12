@@ -1,0 +1,134 @@
+﻿@model PubDtFilter
+@{
+    var jsCode = ViewBag.filters;
+    var jsColumns = ViewBag.columns;
+    var jsActions = ViewBag.actions;
+}
+
+
+<div class="row">
+
+
+    <p>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSection" aria-expanded="false" aria-controls="collapseSection" id="toggleButton">
+
+            <i class="fas fa-chevron-down" id="toggleIcon"></i> Filter
+        </button>
+    </p>
+    <div class="collapse" id="collapseSection">
+
+        <div class="card card-body">
+            <form id="filterForm">
+                
+
+               
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" asp-for="PatientName"></label>
+                   
+                    <div class="col-md-3 p-0">
+                        <input id="Id" asp-for="PatientName" class="form-control form-control-sm" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-4 p-0">
+                        <button type="reset" class="btn btn-primary">Reset</button>
+                    </div>
+                    <div class="col-md-3 p-0">
+                        <button type="button" id="btnSearch" class="btn btn-primary w-100">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="row">
+    <div class="col-md-12">
+
+        <table id="patients" class="table table-hover dataTable" style="width:100%">
+            <thead>
+
+                <tr>
+                    <th>Patient ID</th>
+                    <th> Name</th>
+                    <th>NID</th>
+                    <th>Birth Date</th>
+                    <th>id</th>
+
+                    <th> Report source Name  </th>
+
+                    <th>Dis Name</th>
+                    <th>Gov Name</th>
+                    <th>Links</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+
+        </table>
+    </div>
+</div>
+@section Scripts {
+
+    <script>
+
+        $(document).ready(function () {
+            var table = $('#patients').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ajax": {
+                    "url": "/Patient/FilterPatients",
+                    "type": "POST",
+                    "datatype": "json",
+        @Html.Raw(jsCode)
+                                                },
+            "columnDefs": [{
+                "targets": '_all',
+                "className": 'dt-center'
+            }],
+        @Html.Raw(jsColumns),
+            "pageLength": 10, // Default page length
+            "lengthMenu": [[5, 10, 15, 20], [5, 10, 15, 20]],
+
+            "dom": "<'row'<'col-12'B>>" + // Row for buttons, full width
+            "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" + // Row for lengthMenu and search
+            "<'row'<'col-12'tr>>" + // Row for the table, full width
+        "<'row'<'col-sm-12 col-md-7'i><'col-sm-12 col-md-5'p>>", // Row for info and paging, both on the same row
+
+            "buttons": [
+            'csv',
+            'pdf',
+            'excel',
+            'print',
+            'copy',
+            {
+                extend: 'colvis',
+                text: 'Column Visibility'
+            },
+            {
+                extend: 'colvisRestore',
+                text: 'Restore'
+            }
+        ]
+                       });
+
+        @Html.Raw(jsActions)
+
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Enter') {
+                    document.getElementById('btnSearch').click();
+                }
+            });
+
+
+        });
+    </script>
+}

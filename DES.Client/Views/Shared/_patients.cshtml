@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Patient>
+
+@foreach (var p in Model)
+{
+    <tr>
+        <td>@p.Id</td>
+        <td>@p.PatientName</td>
+        <td>@p.NID</td>
+        <td>@p.BirtDate</td>
+        <td>
+        </td>
+    </tr>
+} 

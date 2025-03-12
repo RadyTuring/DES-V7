@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Patient>
+@{
+    bool isadd = (bool)ViewBag.isadd;
+}
+@if(isadd)
+{
+    <div>
+        <a asp-action="Add">Add</a>
+    </div>
+}
+
+<hr />
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">Data Table With Full Features</h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <table id="_datatable" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>NID</th>
+                    <th>Birth Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <partial name="_patients" model="@Model" />
+
+            </tbody>
+
+        </table>
+    </div>
+    <!-- /.box-body -->
+</div>
+

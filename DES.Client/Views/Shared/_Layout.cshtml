@@ -1,0 +1,134 @@
+﻿@using Newtonsoft.Json
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link href="~/css/select2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/style.css">
+   
+    <link href="~/dt/datatables.min.css" rel="stylesheet">
+    <link href="~/css/bootstrap-icons.min.css" rel="stylesheet">
+    <title>Sidebar With Bootstrap</title>
+</head>
+
+<body>
+
+    @{
+        IEnumerable<DesPage> mypages = null;
+        DesAccount _user = JsonConvert.DeserializeObject<DesAccount>(ViewData["userdata"].ToString()); 
+        string _pages = ViewData["userpages"].ToString();
+        if (!string.IsNullOrEmpty(_pages))
+        {
+            mypages = JsonConvert.DeserializeObject<IEnumerable<DesPage>>(_pages);
+        }
+        var _mainPages = mypages.Where(m => m.PgParentId == null || m.PgParentId == 0);
+        var _childPages = mypages.Where(m => m.PgParentId != null && m.PgParentId != 0);
+
+    }
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <aside id="sidebar">
+            <div class="h-100">
+                <div class="sidebar-logo">
+                    <a href="#"></a>
+                </div>
+
+                <!-- Sidebar Navigation -->
+                <ul class="sidebar-nav">
+
+                    @foreach (var _m in _mainPages)
+                    {
+                        var combinedId = "p" + _m.Id;
+                        var combinedId1 = "#p" + _m.Id;
+                        @if (_m.PgParentId == null)
+                        {
+                            <li class="sidebar-item">
+                                <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="@combinedId1"
+                                   aria-expanded="false" aria-controls="pages">
+                                    <i class="@_m.PgImage"></i>
+                                    @_m.PgTitle
+                                </a>
+                                <ul id="@combinedId" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                                    @foreach (var _c in _childPages)
+                                    {
+                                        string cntrl = @_c.PgHref.Substring(0, @_c.PgHref.IndexOf('/'));
+                                        string act = @_c.PgHref.Substring(@_c.PgHref.IndexOf('/') + 1);
+                                        if (_c.PgParentId == _m.Id)
+                                        {
+                                            <li class="sidebar-item">
+                                                <a asp-action="@act" asp-controller="@cntrl" class="sidebar-link">@_c.PgTitle</a>
+                                            </li>
+                                        }
+
+                                    }
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="sidebar-item">
+                                <a href="#" class="sidebar-link">
+                                    <i class=" @_m.PgImage"></i>
+                                    @_m.PgTitle
+                                </a>
+                            </li>
+                        }
+                    }
+
+
+                </ul>
+            </div>
+        </aside>
+        <!-- Main Component -->
+        <div class="main">
+            <nav style="background-color: rgb(204, 132, 37);" class="navbar navbar-expand px-3 border-bottom">
+                <!-- Button for sidebar toggle -->
+                <button class="btn" type="button" data-bs-theme="dark">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Right-side user info -->
+                <div class="ms-auto d-flex align-items-center">
+                    @if (_user.ImageProfile != null)
+                    {
+                        <img src="@_user.ImageProfile " class="rounded-circle" style="width: 40px; height: 40px; margin-right: 10px;" alt="@_user.UserName">
+                        <p>@_user.UserName</p>
+                    }
+                    else
+                    {
+                        <img src="~/images/person.png" class="rounded-circle" style="width: 40px; height: 40px; margin-right: 10px;" alt="@_user.UserName">
+                    }
+                    <a asp-controller="Account" asp-action="Edit"><span class="text-white me-3" @_user.UserName </span></a>
+
+                    <a asp-controller="Account" asp-action="Logout" class="btn btn-outline-light">Logout</a>
+                </div>
+            </nav>
+            <main class="content px-3 py-2">
+                <div class="container-fluid">
+                    <div class="mb-3">
+
+
+                        @RenderBody()
+
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+   
+
+    <script src="~/js/jquery-3.6.0.min.js"></script>
+    <script src="~/js/select2.min.js"></script>
+
+    <script src="~/dt/datatables.min.js"></script>
+    <script src="~/js/fontawesome.js"></script>
+    <script src="~/js/script.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

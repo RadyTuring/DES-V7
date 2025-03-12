@@ -1,0 +1,128 @@
+[
+  {
+    "ContainingType": "DES.Api.Controllers.AccountController",
+    "Method": "Login",
+    "RelativePath": "api/Account/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Dto.UserLogin",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DES.Api.Controllers.AreaController",
+    "Method": "Add",
+    "RelativePath": "api/Area/Add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Dto.PatientDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DES.Api.Controllers.AreaController",
+    "Method": "GetDists",
+    "RelativePath": "api/Area/GetDists",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DES.Api.Controllers.AreaController",
+    "Method": "GetDistsByGovID",
+    "RelativePath": "api/Area/GetDistsByGovID",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DES.Api.Controllers.AreaController",
+    "Method": "GetGovs",
+    "RelativePath": "api/Area/GetGovs",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DES.Api.Controllers.AreaController",
+    "Method": "GetSourcesByDistID",
+    "RelativePath": "api/Area/GetSourcesByDistID",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DES.Api.Controllers.PatientController",
+    "Method": "Add",
+    "RelativePath": "api/Patient/Add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Dto.PatientDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DES.Api.Controllers.PatientController",
+    "Method": "Get",
+    "RelativePath": "api/Patient/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DES.Api.Controllers.PatientController",
+    "Method": "GetPatients",
+    "RelativePath": "api/Patient/GetPatients",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DataTablesHelper.DataTableApi\u00601[[DataTablesFilters.PubDtFilter, DES.Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

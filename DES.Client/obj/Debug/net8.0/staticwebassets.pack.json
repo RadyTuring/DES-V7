@@ -1,0 +1,85 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Temp\\Group 15Offline\\DES V7\\DES.Client\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\DES.Client.bundle.scp.css",
+      "PackagePath": "staticwebassets\\DES.Client.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\Temp\\Group 15Offline\\DES V7\\DES.Client\\wwwroot\\css\\all.min.css",
+      "PackagePath": "staticwebassets\\css\\all.min.css"
+    },
+    {
+      "Id": "D:\\Temp\\Group 15Offline\\DES V7\\DES.Client\\wwwroot\\css\\bootstrap-icons.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap-icons.min.css"
+    },
+    {
+      "Id": "D:\\Temp\\Group 15Offline\\DES V7\\DES.Client\\wwwroot\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\Temp\\Group 15Offline\\DES V7\\DES.Client\\wwwroot\\css\\login.css",
+      "PackagePath": "staticwebassets\\css\\login.css"
+    },
+    {
+      "Id": "D:\\Temp\\Group 15Offline\\DES V7\\DES.Client\\wwwroot\\css\\select2.min.css",
+      "PackagePath": "staticwebassets\\css\\select2.min.css"
+    },
+    {
+      "Id": "D:\\Temp\\Group 15Offline\\DES V7\\DES.Client\\wwwroot\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
+      "Id": "D:\\Temp\\Group 15Offline\\DES V7\\DES.Client\\wwwroot\\dt\\datatables.css",
+      "PackagePath": "staticwebassets\\dt\\datatables.css"
+    },
+    {
+      "Id": "D:\\Temp\\Group 15Offline\\DES V7\\DES.Client\\wwwroot\\dt\\datatables.js",
+      "PackagePath": "staticwebassets\\dt\\datatables.js"
+    },
+    {
+      "Id": "D:\\Temp\\Group 15Offline\\DES V7\\DES.Client\\wwwroot\\dt\\datatables.min.css",
+      "PackagePath": "staticwebassets\\dt\\datatables.min.css"
+    },
+    {
+      "Id": "D:\\Temp\\Group 15Offline\\DES V7\\DES.Client\\wwwroot\\dt\\datatables.min.js",
+      "PackagePath": "staticwebassets\\dt\\datatables.min.js"
+    },
+    {
+      "Id": "D:\\Temp\\Group 15Offline\\DES V7\\DES.Client\\wwwroot\\images\\person.png",
+      "PackagePath": "staticwebassets\\images\\person.png"
+    },
+    {
+      "Id": "D:\\Temp\\Group 15Offline\\DES V7\\DES.Client\\wwwroot\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "D:\\Temp\\Group 15Offline\\DES V7\\DES.Client\\wwwroot\\js\\jquery-3.6.0.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery-3.6.0.min.js"
+    },
+    {
+      "Id": "D:\\Temp\\Group 15Offline\\DES V7\\DES.Client\\wwwroot\\js\\script.js",
+      "PackagePath": "staticwebassets\\js\\script.js"
+    },
+    {
+      "Id": "D:\\Temp\\Group 15Offline\\DES V7\\DES.Client\\wwwroot\\js\\select2.min.js",
+      "PackagePath": "staticwebassets\\js\\select2.min.js"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.DES.Client.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.DES.Client.props",
+      "PackagePath": "build\\DES.Client.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.DES.Client.props",
+      "PackagePath": "buildMultiTargeting\\DES.Client.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.DES.Client.props",
+      "PackagePath": "buildTransitive\\DES.Client.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

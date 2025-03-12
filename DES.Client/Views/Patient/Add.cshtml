@@ -1,0 +1,126 @@
+﻿@model Dto.PatientDto
+
+<h1>Add</h1>
+<h4>PatientDto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Add">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PatientName" class="control-label"></label>
+                <input asp-for="PatientName" class="form-control" />
+                <span asp-validation-for="PatientName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NID" class="control-label"></label>
+                <input asp-for="NID" class="form-control" />
+                <span asp-validation-for="NID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BirtDate" class="control-label"></label>
+                <input type="date" asp-for="BirtDate" class="form-control" />
+                <span asp-validation-for="BirtDate" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-8">
+                    <select id="govSelect" class="form-control select2" style="width: 100%;" asp-items="ViewBag.govs">
+                        <option value="">--Choose Gov--</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-8">
+                    <select id="distSelect" class="form-control select2" style="width: 100%;">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-8">
+                    <select id="reportsourceSelect" asp-for="AreaId" class="form-control select2" style="width: 100%;">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        $(document).ready(function () {
+            $('#govSelect').change(function () {
+                var govId = $(this).val();
+                if (govId) {
+                    $.ajax({
+                        url: '@Url.Action("GetDistricts", "Patient")',
+                        type: 'GET',
+                        data: { id: govId },
+                        success: function (data) {
+                            console.log('API Response:', data); // Log the response data
+                            var $distSelect = $('#distSelect');
+                            $distSelect.empty(); // Clear previous options
+                            $distSelect.append('<option value="">--Choose Dist--</option>');
+                            $.each(data, function (index, item) {
+                                console.log('Processing item:', item); // Log each item
+                                $distSelect.append($('<option>', {
+                                    value: item.level, // Ensure 'Id' matches the property name in your data
+                                    text: item.lName // Ensure 'LName' matches the property name in your data
+                                }));
+                            });
+                        },
+                        error: function (error) {
+                            console.log('AJAX error:', error); // Log any errors
+                        }
+                    });
+                } else {
+                    $('#distSelect').empty();
+                    $('#distSelect').append('<option value="">--Choose Dist--</option>');
+                }
+            });
+        });
+        $(document).ready(function () {
+            $('#distSelect').change(function () {
+                var disId = $(this).val();
+                if (disId) {
+                    $.ajax({
+                        url: '@Url.Action("GetSourcesByDistId", "Patient")',
+                        type: 'GET',
+                        data: { id: disId },
+                        success: function (data) {
+                            console.log('API Response:', data); // Log the response data
+                            var $reportsourceSelect = $('#reportsourceSelect');
+                            $reportsourceSelect.empty(); // Clear previous options
+                            $reportsourceSelect.append('<option value="">--Choose Dist--</option>');
+                            $.each(data, function (index, item) {
+                                console.log('Processing item:', item); // Log each item
+                                $reportsourceSelect.append($('<option>', {
+                                    value: item.level, // Ensure 'Id' matches the property name in your data
+                                    text: item.lName // Ensure 'LName' matches the property name in your data
+                                }));
+                            });
+                        },
+                        error: function (error) {
+                            console.log('AJAX error:', error); // Log any errors
+                        }
+                    });
+                } else {
+                    $('#reportsourceSelect').empty();
+                    $('#reportsourceSelect').append('<option value="">--Choose Report Source--</option>');
+                }
+            });
+        });
+    </script>
+
+}
